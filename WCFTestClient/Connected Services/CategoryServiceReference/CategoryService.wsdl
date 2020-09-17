@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CategoryService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfDbFirst.Models.ViewModels" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfDbFirst.EF" />
+      <xs:element name="Get">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WcfDbFirst.Models.ViewModels" minOccurs="0" name="GetResult" nillable="true" type="q1:ArrayOfCategoryViewModel" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetByName">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetByNameResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfDbFirst.Models.ViewModels" minOccurs="0" name="GetByNameResult" nillable="true" type="q2:ArrayOfCategoryViewModel" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetById">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetByIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfDbFirst.Models.ViewModels" minOccurs="0" name="GetByIdResult" nillable="true" type="q3:CategoryViewModel" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Add">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfDbFirst.EF" minOccurs="0" name="c" nillable="true" type="q4:Category" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Edit">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfDbFirst.EF" minOccurs="0" name="c" nillable="true" type="q5:Category" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="EditResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Remove">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RemoveResponse">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WcfDbFirst.Models.ViewModels" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WcfDbFirst.Models.ViewModels" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfCategoryViewModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="CategoryViewModel" nillable="true" type="tns:CategoryViewModel" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCategoryViewModel" nillable="true" type="tns:ArrayOfCategoryViewModel" />
+      <xs:complexType name="CategoryViewModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Order" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CategoryViewModel" nillable="true" type="tns:CategoryViewModel" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WcfDbFirst.EF" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WcfDbFirst.EF" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="Category">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Order" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Products" nillable="true" type="tns:ArrayOfProduct" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Category" nillable="true" type="tns:Category" />
+      <xs:complexType name="ArrayOfProduct">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:Product" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfProduct" nillable="true" type="tns:ArrayOfProduct" />
+      <xs:complexType name="Product">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Category" nillable="true" type="tns:Category" />
+          <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
+          <xs:element minOccurs="0" name="Descriptions" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Price" type="xs:double" />
+          <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Product" nillable="true" type="tns:Product" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ICategoryService_Get_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_Get_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_GetByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetByName" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_GetByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_GetById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetById" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_GetById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_Add_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_Add_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:Edit" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_Remove_InputMessage">
+    <wsdl:part name="parameters" element="tns:Remove" />
+  </wsdl:message>
+  <wsdl:message name="ICategoryService_Remove_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICategoryService">
+    <wsdl:operation name="Get">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICategoryService/Get" message="tns:ICategoryService_Get_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICategoryService/GetResponse" message="tns:ICategoryService_Get_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICategoryService/GetByName" message="tns:ICategoryService_GetByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICategoryService/GetByNameResponse" message="tns:ICategoryService_GetByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICategoryService/GetById" message="tns:ICategoryService_GetById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICategoryService/GetByIdResponse" message="tns:ICategoryService_GetById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICategoryService/Add" message="tns:ICategoryService_Add_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICategoryService/AddResponse" message="tns:ICategoryService_Add_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICategoryService/Edit" message="tns:ICategoryService_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICategoryService/EditResponse" message="tns:ICategoryService_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Remove">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICategoryService/Remove" message="tns:ICategoryService_Remove_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICategoryService/RemoveResponse" message="tns:ICategoryService_Remove_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICategoryService" type="tns:ICategoryService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Get">
+      <soap:operation soapAction="http://tempuri.org/ICategoryService/Get" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByName">
+      <soap:operation soapAction="http://tempuri.org/ICategoryService/GetByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetById">
+      <soap:operation soapAction="http://tempuri.org/ICategoryService/GetById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://tempuri.org/ICategoryService/Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Edit">
+      <soap:operation soapAction="http://tempuri.org/ICategoryService/Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Remove">
+      <soap:operation soapAction="http://tempuri.org/ICategoryService/Remove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CategoryService">
+    <wsdl:port name="BasicHttpBinding_ICategoryService" binding="tns:BasicHttpBinding_ICategoryService">
+      <soap:address location="http://localhost:63219/CategoryService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
